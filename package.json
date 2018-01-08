@@ -1,0 +1,22 @@
+{
+  "name": "node-poker-hand",
+  "version": "1.0.0",
+  "description": "coding exercise - draws 5 cards from a deck, and identifies top scoring poker hand.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luigilake/node-poker-hand.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Luigi Lake",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luigilake/node-poker-hand/issues"
+  },
+  "homepage": "https://github.com/luigilake/node-poker-hand#readme"
+}
