@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/luigilake/node-poker-hand/issues"
   },
-  "homepage": "https://github.com/luigilake/node-poker-hand#readme"
+  "homepage": "https://github.com/luigilake/node-poker-hand#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
 }
