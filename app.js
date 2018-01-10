@@ -74,6 +74,8 @@ let calculateHand = (cards) => {
     Object.keys(suitCount).includes(card.suit) ? suitCount[card.suit] += 1 : suitCount[card.suit] = 1
   })
 
+  valueCount = {'13': 1, '12': 1, '11': 1, '10': 1, '9': 1}
+
   //calculate for four of a kind
   let fourOfAKind;
   if(Object.values(valueCount).includes(4)){
@@ -96,7 +98,9 @@ let calculateHand = (cards) => {
   let straight = true;
   let values = Object.keys(valueCount).map( value => parseInt(value))
   values.sort((a, b) => { a - b }).reverse();
-  for(let i = 0; i < values.length; i++){
+  console.log(values)
+  for(let i = 0; i < values.length - 1; i++){
+    console.log(values[i] - values[i + 1])
     if(values[i] - values[i + 1] != 1 || values.length != 5){
       straight = false;
     }
