@@ -73,7 +73,14 @@ let calculateHand = (cards) => {
     Object.keys(valueCount).includes(card.value) ? valueCount[card.value] += 1 : valueCount[card.value] = 1
     Object.keys(suitCount).includes(card.suit) ? suitCount[card.suit] += 1 : suitCount[card.suit] = 1
   })
-  return(suitCount)
+
+  //calculate for flush
+  let flush;
+  if(Object.keys(suitCount).length === 1){
+    flush = true;
+  }
+
+  return(Object.keys(suitCount).length)
 }
 
 drawCards()
