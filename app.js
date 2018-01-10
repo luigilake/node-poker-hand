@@ -70,16 +70,8 @@ let calculateHand = (cards) => {
   let valueCount = {}
   let suitCount = {}
   cards.forEach(card => {
-    if(Object.keys(valueCount).includes(card.value)){
-      valueCount[card.value] += 1;
-    } else {
-      valueCount[card.value] = 1
-    }
-    if(Object.keys(suitCount).includes(card.suit)){
-      suitCount[card.suit] += 1;
-    } else {
-      suitCount[card.suit] = 1
-    }
+    Object.keys(valueCount).includes(card.value) ? valueCount[card.value] += 1 : valueCount[card.value] = 1
+    Object.keys(suitCount).includes(card.suit) ? suitCount[card.suit] += 1 : suitCount[card.suit] = 1
   })
   return(suitCount)
 }
