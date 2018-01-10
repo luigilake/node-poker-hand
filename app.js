@@ -80,25 +80,41 @@ let calculateHand = (cards) => {
     flush = true;
   }
 
+  //calculate for four of a kind
+  let fourOfAKind;
+  if(Object.values(valueCount).includes(4)){
+    fourOfAKind = true;
+  }
+
+  //calculate for full house
+  let fullHouse;
+  if(Object.values(valueCount).includes(3) && Object.values(valueCount).includes(2)){
+    fullHouse = true
+  }
+
   //calculate for straight
   let straight = true;
   let values = Object.keys(valueCount).map( value => parseInt(value))
   let count = 0;
   values.sort((a, b) => { a - b }).reverse()
   for(let i = 0; i < values.length; i++){
-    console.log(values[i] - values[i + 1])
     if(values[i] - values[i + 1] != 1 || values.length != 5){
       straight = false;
     }
   }
-  
 
   if(flush && straight){
     return('STRAIGHT FLUSH')
+  } else if (fourOfAKind){
+    return('FOUR OF A KIND')
+  } else if (fullHouse){
+    return('FULL HOUSE')
   } else if (flush && !straight){
     return('FLUSH')
   } else if (!flush && straight){
     return('STRAIGHT')
+  } else {
+    return(`FLUSH: ${flush}\nSTRAIGHT: ${straight}\nFOUR OF A KIND: ${fourOfAKind}\nFULL HOUSE: ${fullHouse}`)
   }
 }
 
