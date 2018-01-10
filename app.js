@@ -4,7 +4,7 @@ let drawnCards;
 
 class Card {
   constructor(value, suit){
-    this.value = value == 'ACE' ? 1 : value == 'JACK' ? 11 : value == 'QUEEN' ? 12 : value == 'KING' ? 13 : value;
+    this.value = value == 'ACE' ? '1' : value == 'JACK' ? '11' : value == 'QUEEN' ? '12' : value == 'KING' ? '13' : value;
     this.suit = suit;
   }
 
@@ -27,16 +27,16 @@ class Card {
     }
 
     switch(this.value){
-      case 1:
+      case '1':
         value = 'A'
         break;
-      case 11:
+      case '11':
         value = 'J'
         break;
-      case 12:
+      case '12':
         value = 'Q'
         break;
-      case 13:
+      case '13':
         value = 'K'
         break;
       default:
@@ -74,12 +74,6 @@ let calculateHand = (cards) => {
     Object.keys(suitCount).includes(card.suit) ? suitCount[card.suit] += 1 : suitCount[card.suit] = 1
   })
 
-  //calculate for flush
-  let flush;
-  if(Object.keys(suitCount).length === 1){
-    flush = true;
-  }
-
   //calculate for four of a kind
   let fourOfAKind;
   if(Object.values(valueCount).includes(4)){
@@ -92,16 +86,39 @@ let calculateHand = (cards) => {
     fullHouse = true
   }
 
+  //calculate for flush
+  let flush;
+  if(Object.keys(suitCount).length === 1){
+    flush = true;
+  }
+
   //calculate for straight
   let straight = true;
   let values = Object.keys(valueCount).map( value => parseInt(value))
-  let count = 0;
-  values.sort((a, b) => { a - b }).reverse()
+  values.sort((a, b) => { a - b }).reverse();
   for(let i = 0; i < values.length; i++){
     if(values[i] - values[i + 1] != 1 || values.length != 5){
       straight = false;
     }
   }
+
+  //calculate for three of a kind
+  let threeOfAKind;
+  if(Object.values(valueCount).includes(3) && !Object.values(valueCount).includes(2)){
+    threeOfAKind = true;
+  }
+
+  //calculate for two pair
+  let twoPair;
+  let count = 0;
+  Object.values(valueCount).forEach(value => {
+    if(value == 2){ count += 1 };
+  });
+  if(count == 2){ twoPair = true };
+
+  //calculate for one pair
+  let onePair;
+  if(count == 1){onePair = true };
 
   if(flush && straight){
     return('STRAIGHT FLUSH')
@@ -113,8 +130,14 @@ let calculateHand = (cards) => {
     return('FLUSH')
   } else if (!flush && straight){
     return('STRAIGHT')
+  } else if (threeOfAKind){
+    return('THREE OF A KIND')
+  } else if (twoPair){
+    return('TWO PAIR')
+  } else if (onePair){
+    return('ONE PAIR')
   } else {
-    return(`FLUSH: ${flush}\nSTRAIGHT: ${straight}\nFOUR OF A KIND: ${fourOfAKind}\nFULL HOUSE: ${fullHouse}`)
+    return('HIGH CARD')
   }
 }
 
@@ -124,5 +147,5 @@ setTimeout(() => {console.log('*** DECK SHUFFLED ***')}, 1000);
 setTimeout(() => {console.log('*** DRAW 5 CARDS ***')}, 2000);
 setTimeout(() => {console.log('YOUR CARDS:')}, 3000);
 setTimeout(() => {presentCards(drawnCards)}, 3000);
-setTimeout(() => {console.log(`YOUR SCORE:`)}, 4000);
-setTimeout(() => {console.log(calculateHand(drawnCards))}, 4000);
+setTimeout(() => {console.log(`YOUR SCORE: ${calculateHand(drawnCards)}`)}, 4000);
+// setTimeout(() => {console.log(calculateHand(drawnCards))}, 4000);
