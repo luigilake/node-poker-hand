@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import Card from './public/Card'
+import presentCards from './public/presentCards'
 
 let drawnCards;
 
@@ -16,12 +17,6 @@ let drawCards = () => {
     drawnCards = cards
   })
   .catch(error => console.error(`Error in fetch: ${error.message}`))
-}
-
-let presentCards = (cards) => {
-  cards.forEach( card => {
-    console.log(` - ${card.printCard()}`)
-  })
 }
 
 let calculateHand = (cards) => {
