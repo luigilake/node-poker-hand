@@ -66,9 +66,29 @@ let presentCards = (cards) => {
   })
 }
 
+let calculateHand = (cards) => {
+  let valueCount = {}
+  let suitCount = {}
+  cards.forEach(card => {
+    if(Object.keys(valueCount).includes(card.value)){
+      valueCount[card.value] += 1;
+    } else {
+      valueCount[card.value] = 1
+    }
+    if(Object.keys(suitCount).includes(card.suit)){
+      suitCount[card.suit] += 1;
+    } else {
+      suitCount[card.suit] = 1
+    }
+  })
+  return(suitCount)
+}
+
 drawCards()
 console.log('*** DECK OBTAINED ***')
 setTimeout(() => {console.log('*** DECK SHUFFLED ***')}, 1000);
 setTimeout(() => {console.log('*** DRAW 5 CARDS ***')}, 2000);
 setTimeout(() => {console.log('YOUR CARDS:')}, 3000);
 setTimeout(() => {presentCards(drawnCards)}, 3000);
+setTimeout(() => {console.log(`YOUR SCORE:`)}, 4000);
+setTimeout(() => {console.log(calculateHand(drawnCards))}, 4000);
