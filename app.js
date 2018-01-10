@@ -4,7 +4,7 @@ let drawnCards;
 
 class Card {
   constructor(value, suit){
-    this.value = value;
+    this.value = value == 'ACE' ? 1 : value == 'JACK' ? 11 : value == 'QUEEN' ? 12 : value == 'KING' ? 13 : value;
     this.suit = suit;
   }
 
@@ -27,16 +27,16 @@ class Card {
     }
 
     switch(this.value){
-      case 'ACE':
+      case 1:
         value = 'A'
         break;
-      case 'JACK':
+      case 11:
         value = 'J'
         break;
-      case 'QUEEN':
+      case 12:
         value = 'Q'
         break;
-      case 'KING':
+      case 13:
         value = 'K'
         break;
       default:
@@ -80,7 +80,26 @@ let calculateHand = (cards) => {
     flush = true;
   }
 
-  return(Object.keys(suitCount).length)
+  //calculate for straight
+  let straight = true;
+  let values = Object.keys(valueCount).map( value => parseInt(value))
+  let count = 0;
+  values.sort((a, b) => { a - b }).reverse()
+  for(let i = 0; i < values.length; i++){
+    console.log(values[i] - values[i + 1])
+    if(values[i] - values[i + 1] != 1 || values.length != 5){
+      straight = false;
+    }
+  }
+  
+
+  if(flush && straight){
+    return('STRAIGHT FLUSH')
+  } else if (flush && !straight){
+    return('FLUSH')
+  } else if (!flush && straight){
+    return('STRAIGHT')
+  }
 }
 
 drawCards()
