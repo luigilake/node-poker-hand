@@ -1,50 +1,7 @@
 import fetch from 'node-fetch';
+import Card from './public/Card'
 
 let drawnCards;
-
-class Card {
-  constructor(value, suit){
-    this.value = value == 'ACE' ? '1' : value == 'JACK' ? '11' : value == 'QUEEN' ? '12' : value == 'KING' ? '13' : value;
-    this.suit = suit;
-  }
-
-  printCard(){
-    let suit;
-    let value;
-    switch(this.suit){
-      case 'HEARTS':
-        suit = '♥'
-        break;
-      case 'SPADES':
-        suit = '♠'
-        break;
-      case 'CLUBS':
-        suit = '♣'
-        break;
-      case 'DIAMONDS':
-        suit = '♦'
-        break;
-    }
-
-    switch(this.value){
-      case '1':
-        value = 'A'
-        break;
-      case '11':
-        value = 'J'
-        break;
-      case '12':
-        value = 'Q'
-        break;
-      case '13':
-        value = 'K'
-        break;
-      default:
-        value = this.value
-    }
-    return(`${value}${suit}`)
-  }
-}
 
 
 let drawCards = () => {
@@ -58,6 +15,7 @@ let drawCards = () => {
     })
     drawnCards = cards
   })
+  .catch(error => console.error(`Error in fetch: ${error.message}`))
 }
 
 let presentCards = (cards) => {
@@ -118,7 +76,7 @@ let calculateHand = (cards) => {
 
   //calculate for one pair
   let onePair;
-  if(count == 1){onePair = true };
+  if(count == 1){ onePair = true };
 
   if(flush && straight){
     return('STRAIGHT FLUSH')
@@ -148,4 +106,3 @@ setTimeout(() => {console.log('*** DRAW 5 CARDS ***')}, 2000);
 setTimeout(() => {console.log('YOUR CARDS:')}, 3000);
 setTimeout(() => {presentCards(drawnCards)}, 3000);
 setTimeout(() => {console.log(`YOUR SCORE: ${calculateHand(drawnCards)}`)}, 4000);
-// setTimeout(() => {console.log(calculateHand(drawnCards))}, 4000);
