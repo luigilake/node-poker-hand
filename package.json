@@ -1,0 +1,30 @@
+{
+  "name": "node-poker-hand",
+  "version": "1.0.0",
+  "description": "coding exercise - draws 5 cards from a deck, and identifies top scoring poker hand.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "populate": "node_modules/babel-cli/bin/babel-node.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luigilake/node-poker-hand.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Luigi Lake",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luigilake/node-poker-hand/issues"
+  },
+  "homepage": "https://github.com/luigilake/node-poker-hand#readme",
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "node-fetch": "^1.7.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
