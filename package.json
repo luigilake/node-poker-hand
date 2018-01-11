@@ -4,8 +4,9 @@
   "description": "coding exercise - draws 5 cards from a deck, and identifies top scoring poker hand.",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
-    "populate": "node_modules/babel-cli/bin/babel-node.js"
+    "test": "mocha --require babel-core/register ./test/*.js",
+    "populate": "node_modules/babel-cli/bin/babel-node.js",
+    "start": "npm run populate app.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,8 @@
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0"
   }
 }
