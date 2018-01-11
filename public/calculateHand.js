@@ -1,3 +1,10 @@
+import calcFourOfAKind from './fourOfAKind';
+import calcFullHouse from './fullHouse';
+import calcFlush from './flush';
+import calcStraight from './straight';
+import calcThreeOfAKind from './threeOfAKind';
+import pairCount from './pairCount'
+
 let calculateHand = (cards) => {
   let valueCount = {}
   let suitCount = {}
@@ -7,49 +14,27 @@ let calculateHand = (cards) => {
   })
 
   //calculate for four of a kind
-  let fourOfAKind;
-  if(Object.values(valueCount).includes(4)){
-    fourOfAKind = true;
-  }
+  let fourOfAKind = calcFourOfAKind(valueCount);
 
   //calculate for full house
-  let fullHouse;
-  if(Object.values(valueCount).includes(3) && Object.values(valueCount).includes(2)){
-    fullHouse = true
-  }
+  let fullHouse = calcFullHouse(valueCount);
 
   //calculate for flush
-  let flush;
-  if(Object.keys(suitCount).length === 1){
-    flush = true;
-  }
+  let flush = calcFlush(suitCount);
 
   //calculate for straight
-  let straight = true;
-  let values = Object.keys(valueCount).map( value => parseInt(value))
-  values.sort((a, b) => { a - b }).reverse();
-  for(let i = 0; i < values.length - 1; i++){
-    if(values[i] - values[i + 1] != 1 || values.length != 5){
-      straight = false;
-    }
-  }
+  let straight = calcStraight(valueCount)
 
   //calculate for three of a kind
-  let threeOfAKind;
-  if(Object.values(valueCount).includes(3) && !Object.values(valueCount).includes(2)){
-    threeOfAKind = true;
-  }
+  let threeOfAKind = calcThreeOfAKind(valueCount);
 
-  //calculate for two pair
   let twoPair;
-  let count = 0;
-  Object.values(valueCount).forEach(value => {
-    if(value == 2){ count += 1 };
-  });
+  let onePair;
+  let count = pairCount(valueCount);
+  //calculate for two pair
   if(count == 2){ twoPair = true };
 
   //calculate for one pair
-  let onePair;
   if(count == 1){ onePair = true };
 
   if(flush && straight){
