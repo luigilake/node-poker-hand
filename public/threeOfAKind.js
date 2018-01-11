@@ -1,6 +1,6 @@
 let calcThreeOfAKind = (valueCount) => {
 
-  if(Object.values(valueCount).includes(3) && !Object.values(valueCount).includes(2)){
+  if(Object.values(valueCount).includes(3) && Object.values(valueCount).includes(1)){
     let num = Object.keys(valueCount)[Object.values(valueCount).indexOf(3)];
     switch(num){
       case '1':
