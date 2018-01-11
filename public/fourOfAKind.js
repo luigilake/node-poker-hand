@@ -1,10 +1,7 @@
 let calcFourOfAKind = (valueCount) => {
   let answer;
   let num;
-  if(Object.values(valueCount).includes(4)){
-    answer = true;
-  }
-  if(answer == true){
+  if(Object.values(valueCount).includes(4) && Object.values(valueCount).length == 2){
     num = Object.keys(valueCount)[Object.values(valueCount).indexOf(4)];
     switch(num){
       case '1':
