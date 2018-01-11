@@ -7,7 +7,7 @@ let pairCount = (valueCount) => {
     }
   }
   values.sort((a,b) => {a - b}).reverse()
-  if(values.length == 2){
+  if(values.length == 2 && valuesArray.length == 3){
     let num1 = values[0]
     let num2 = values[1]
     switch(num1){
@@ -39,7 +39,7 @@ let pairCount = (valueCount) => {
         break;
     }
     return(`TWO PAIR, ${num1}S AND ${num2}S`)
-  } else if (values.length == 1){
+  } else if (values.length == 1 && valuesArray.length == 4){
     let num1 = values[0]
     switch(num1){
       case '1':
