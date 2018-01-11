@@ -35,10 +35,14 @@ let calcStraight = (valueCount) => {
       num = values[0];
   }
 
-  if(royal && straight){
-    return('ACE-HIGH STRAIGHT')
-  } else if (!royal && straight){
-    return(`${num}-HIGH STRAIGHT`)
+  if(values.length == 5){
+    if(royal && straight){
+      return('ACE-HIGH STRAIGHT')
+    } else if (!royal && straight){
+      return(`${num}-HIGH STRAIGHT`)
+    } else {
+      return(false)
+    }
   } else {
     return(false)
   }
