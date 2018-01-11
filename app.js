@@ -14,15 +14,14 @@ let drawCards = () => {
         new Card(card.value, card.suit)
       )
     })
-    drawnCards = cards
+    return(cards)
+  })
+  .then(cards => {
+    console.log('*** DECK OBTAINED ***\n*** DECK SHUFFLED ***\n*** DRAW 5 CARDS ***');
+    presentCards(cards);
+    console.log(`TOP POKER HAND: ${calculateHand(cards)}`)
   })
   .catch(error => console.error(`Error in fetch: ${error.message}`))
 }
 
 drawCards()
-console.log('*** DECK OBTAINED ***')
-setTimeout(() => {console.log('*** DECK SHUFFLED ***')}, 1000);
-setTimeout(() => {console.log('*** DRAW 5 CARDS ***')}, 2000);
-setTimeout(() => {console.log('YOUR CARDS:')}, 3000);
-setTimeout(() => {presentCards(drawnCards)}, 3000);
-setTimeout(() => {console.log(`TOP POKER HAND: ${calculateHand(drawnCards)}`)}, 4000);
