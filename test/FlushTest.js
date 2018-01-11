@@ -24,6 +24,13 @@ let data = {
     'CLUBS': 1,
     'DIAMONDS': 1
   },
+  incomplete: {
+    'HEARTS': 2
+  },
+  incorrect: {
+    'HEARTS': 20
+  },
+  empty: {}
 }
 
 describe('calcFlush', () => {
@@ -45,5 +52,17 @@ describe('calcFlush', () => {
 
   it('should return false', () => {
     expect(calcFlush(data.fail4)).to.equal(false);
+  })
+
+  it('should return false', () => {
+    expect(calcFlush(data.incomplete)).to.equal(false);
+  })
+
+  it('should return false', () => {
+    expect(calcFlush(data.incorrect)).to.equal(false);
+  })
+
+  it('should return false', () => {
+    expect(calcFlush(data.empty)).to.equal(false);
   })
 })

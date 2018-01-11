@@ -41,6 +41,10 @@ let data = {
     '10': 1,
     '9': 1
   },
+  failIncomplete: {
+    '13': 2
+  },
+  null: {}
 }
 
 describe('calcFullHouse', () => {
@@ -75,5 +79,13 @@ describe('calcFullHouse', () => {
 
   it('should return false (straight)', () => {
     expect(calcFullHouse(data.failStraight)).to.equal(false);
+  })
+
+  it('should return false (incomplete)', () => {
+    expect(calcFullHouse(data.failIncomplete)).to.equal(false);
+  })
+
+  it('should return false (null)', () => {
+    expect(calcFullHouse(data.null)).to.equal(false);
   })
 })

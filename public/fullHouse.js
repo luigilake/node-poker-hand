@@ -8,7 +8,7 @@ let calcFullHouse = (valueCount) => {
           return('A');
           break;
         case '11':
-          return('J');
+          return('J'); 
           break;
         case '12':
           return('Q');
