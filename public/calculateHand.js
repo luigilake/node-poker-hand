@@ -28,31 +28,28 @@ let calculateHand = (cards) => {
   //calculate for three of a kind
   let threeOfAKind = calcThreeOfAKind(valueCount);
 
-  let twoPair;
-  let onePair;
-  let count = pairCount(valueCount);
+  let pair = pairCount(valueCount);
   //calculate for two pair
-  if(count == 2){ twoPair = true };
-
   //calculate for one pair
-  if(count == 1){ onePair = true };
 
   if(flush && straight){
-    return('STRAIGHT FLUSH')
+    if(straight == 'ACE-HIGH STRAIGHT'){
+      return('ROYAL STRAIGHT FLUSH')
+    } else {
+      return(`${straight} FLUSH`)
+    }
   } else if (fourOfAKind){
-    return('FOUR OF A KIND')
+    return(fourOfAKind)
   } else if (fullHouse){
-    return('FULL HOUSE')
+    return(fullHouse)
   } else if (flush && !straight){
-    return('FLUSH')
+    return(flush)
   } else if (!flush && straight){
-    return('STRAIGHT')
+    return(straight)
   } else if (threeOfAKind){
-    return('THREE OF A KIND')
-  } else if (twoPair){
-    return('TWO PAIR')
-  } else if (onePair){
-    return('ONE PAIR')
+    return(threeOfAKind)
+  } else if (pair){
+    return(pair)
   } else {
     return('HIGH CARD')
   }

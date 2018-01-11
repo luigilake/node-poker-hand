@@ -10,5 +10,5 @@ it('should pass', () => {
 });
 
 it('should return true', () => {
-  expect(calcFlush(data)).to.equal(true);
+  expect(calcFlush(data)).to.equal('FLUSH');
 })
