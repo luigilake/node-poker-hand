@@ -24,4 +24,4 @@ let drawCards = () => {
   .catch(error => console.error(`Error in fetch: ${error.message}`))
 }
 
-drawCards()
+drawCards();
