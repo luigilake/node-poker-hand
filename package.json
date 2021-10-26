@@ -1,7 +1,7 @@
 {
-  "name": "node-poker-hand",
+  "name": "node-sessions",
   "version": "1.0.0",
-  "description": "coding exercise - draws 5 cards from a deck, and identifies top scoring poker hand.",
+  "description": "coding exercise - reformat user event data into sessions",
   "main": "app.js",
   "scripts": {
     "test": "mocha --require babel-core/register ./test/*.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luigilake/node-poker-hand.git"
+    "url": "git+https://github.com/luigilake/node-sessions.git"
   },
   "keywords": [
     "node"
@@ -18,9 +18,8 @@
   "author": "Luigi Lake",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/luigilake/node-poker-hand/issues"
   },
-  "homepage": "https://github.com/luigilake/node-poker-hand#readme",
+  "homepage": "https://github.com/luigilake/node-sessionsd#readme",
   "dependencies": {
     "babel-preset-env": "^1.6.1",
     "moment": "^2.29.1",
