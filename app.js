@@ -52,7 +52,7 @@ let getDataset = () => {
     });
   })
   .then(response => {
-    console.log(response);
+  console.log(response);
   })
   .catch(error => console.error(`Error in fetch: ${error.message}`))
 };
