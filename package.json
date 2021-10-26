@@ -17,8 +17,7 @@
   ],
   "author": "Luigi Lake",
   "license": "ISC",
-  "bugs": {
-  },
+  "bugs": {},
   "homepage": "https://github.com/luigilake/node-sessionsd#readme",
   "dependencies": {
     "babel-preset-env": "^1.6.1",
